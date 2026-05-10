@@ -1,27 +1,24 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import './App.scss';
 
 export const App = () => {
   const [count, setCount] = useState(0);
-  const countRef = useRef(0);
 
   const addOne = () => {
-    countRef.current += 1;
-    setCount(countRef.current);
+    setCount(prev => prev + 1);
   };
 
   const add100 = () => {
-    countRef.current += 100;
-    setCount(countRef.current);
+    setCount(prev => prev + 100);
   };
 
   // DON'T change the code below
   const increase = () => {
-    if (count % 5 === 0) {
+    addOne();
+
+    if ((count + 1) % 5 === 0) {
       add100();
     }
-
-    addOne();
   };
 
   return (
